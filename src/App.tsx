@@ -1,33 +1,53 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
+// import { useState } from 'react'
 import './App.css'
+import useSWR from 'swr'
+
+import Header from './components/Header/Header'
+import Title from './components/Title/Title'
+
+const ENDPOINT = '/data/data.json'
+
+async function fetcher(endpoint: string) {
+  const response = await fetch(endpoint)
+  const json = await response.json()
+
+  return json
+}
 
 function App() {
-  const [count, setCount] = useState(0)
+  const { data, error } = useSWR(ENDPOINT, fetcher)
+
+  console.log({ data, error })
 
   return (
     <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+      <Header></Header>
+      <section id='home' className='section'>
+        <div className='wrapper'>
+          <Title firstLine='Hello' secondLine='Beautiful' />
+          <div className='outro'>
+            <h2>My name is Sara Pitt</h2>
+            <p>I'm a web developer and artist</p>
+            <button className='icon-button scroll-down-button'>
+              <span className='visually-hidden'>Scroll down</span>
+              <img
+                src={'/icons/chevron-down.svg'}
+                alt='Arrow icon pointing down'
+              />
+            </button>
+          </div>
+        </div>
+      </section>
+      <section id='work' className='section'>
+        <div className='wrapper'>
+          <Title firstLine='Work' />
+          <div className='projects'>
+            {/* {data.map((item) => {
+
+            })} */}
+          </div>
+        </div>
+      </section>
     </>
   )
 }

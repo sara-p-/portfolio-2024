@@ -1,68 +1,190 @@
-:root {
-  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
-  font-weight: 400;
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Oswald:wght@200..700&display=swap');
 
-  color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
+#root {
+  /* colors */
+  --white: #ffffff;
+  --black: #000000;
+  --red: #e74c3c;
+
+  /* Theme */
+  --primary: var(--black);
+  --secondary: var(--white);
+  --accent: var(--red);
+
+  /* Font */
+  --base-font-family: 'Inter', sans-serif;
+  --heading-font-family: 'Oswald', sans-serif;
+
+  font-family: var(--base-font-family);
+  font-size: 24px;
+  font-weight: 300;
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+
+  /* Border */
+  --base-border: 5px solid var(--primary);
+
+  width: 100%;
+  height: 100%;
+  min-height: 100%;
+  /* background-color: var(--white); */
 }
 
-a {
-  font-weight: 500;
-  color: #646cff;
-  text-decoration: inherit;
-}
-a:hover {
-  color: #535bf2;
+html,
+body {
+  width: 100%;
+  height: 100%;
+  min-height: 100%;
 }
 
 body {
+  background-color: var(--white);
+  background-image: url(/background-dots.svg);
+  background-size: 35px;
+  background-repeat: repeat;
+  background-attachment: fixed;
   margin: 0;
-  display: flex;
-  place-items: center;
-  min-width: 320px;
-  min-height: 100vh;
+  padding: 0;
+  font-size: 24px;
 }
 
-h1 {
-  font-size: 3.2em;
-  line-height: 1.1;
+.section {
+  height: 100%;
+  width: 100%;
+  background-color: transparent;
+  border-top: var(--base-border);
+  border-bottom: var(--base-border);
+  margin-top: -5px;
 }
 
-button {
-  border-radius: 8px;
-  border: 1px solid transparent;
-  padding: 0.6em 1.2em;
-  font-size: 1em;
-  font-weight: 500;
-  font-family: inherit;
-  background-color: #1a1a1a;
+.fullscreen {
+  height: 100%;
+  min-height: 100%;
+}
+
+.wrapper {
+  width: auto;
+  max-width: 1400px;
+  height: 100%;
+  min-height: 100%;
+  border-right: var(--base-border);
+  border-left: var(--base-border);
+  background-color: var(--secondary);
+  padding: 0 1rem;
+}
+
+a {
+  text-decoration: none;
+  line-height: 1;
+}
+
+button.icon-button {
+  border: none;
+  background-color: transparent;
+  color: var(--primary);
+  padding: 0;
+  margin: 0;
   cursor: pointer;
-  transition: border-color 0.25s;
-}
-button:hover {
-  border-color: #646cff;
-}
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
+  display: block;
+  img {
+    height: 24px;
+    width: auto;
+    padding: 0;
+    margin: 0;
+  }
 }
 
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
+p {
+  font-size: 1em;
+  margin-bottom: 16px;
+  padding: 0;
+  line-height: 1.2;
+}
+
+h1,
+.h1,
+h2,
+.h2,
+h3,
+.h3,
+h4,
+.h4,
+h5,
+.h5,
+h6,
+.h6 {
+  font-family: 'Oswald', sans-serif;
+  line-height: 1;
+  margin-bottom: 1.25rem;
+  text-transform: uppercase;
+  margin-top: 0;
+  color: var(--primary);
+}
+
+h1,
+.h1 {
+  font-size: 9.7em;
+  letter-spacing: -4px;
+}
+
+h2,
+.h2 {
+  font-size: 2.5em;
+  position: relative;
+  &:before {
+    content: '';
+    width: 120px;
+    height: 5px;
+    position: absolute;
+    top: -20px;
+    left: 0;
+    background-color: var(--primary);
   }
-  a:hover {
-    color: #747bff;
+}
+
+h3,
+.h3 {
+  font-size: 0.8em;
+  font-family: 'Open Sans', sans-serif;
+  line-height: 1.2;
+  font-weight: 800;
+  letter-spacing: 0.6px;
+}
+
+ul {
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+}
+
+.menu {
+  display: flex;
+  .menu-item {
+    margin-right: 1rem;
+    &:last-of-type {
+      margin-right: 0;
+    }
   }
-  button {
-    background-color: #f9f9f9;
+  a {
+    font-size: 1.2em;
+    line-height: 1;
+    color: var(--primary);
+    padding-bottom: 5px;
+    position: relative;
+    display: block;
+    text-transform: lowercase;
   }
+}
+
+.visually-hidden {
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  height: 1px;
+  overflow: hidden;
+  position: absolute;
+  white-space: nowrap;
+  width: 1px;
 }
