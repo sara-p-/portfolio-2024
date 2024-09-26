@@ -55,8 +55,6 @@ body {
   height: 100%;
   width: 100%;
   background-color: transparent;
-  border-top: var(--base-border);
-  border-bottom: var(--base-border);
   margin-top: -5px;
 }
 
@@ -68,12 +66,12 @@ body {
 .wrapper {
   width: auto;
   max-width: 1400px;
-  height: 100%;
+  height: auto;
   min-height: 100%;
-  border-right: var(--base-border);
-  border-left: var(--base-border);
+  border: var(--base-border);
   background-color: var(--secondary);
   padding: 0 1rem;
+  overflow-x: hidden;
 }
 
 a {

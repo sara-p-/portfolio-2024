@@ -1,4 +1,4 @@
-import './button-link.css'
+import './button.css'
 
 type buttonProps = {
   text: string
@@ -10,7 +10,7 @@ type buttonProps = {
 function ButtonLink({ text, href, icon, classes = [] }: buttonProps) {
   const formattedClasses: string = classes.length > 0 ? classes.join(' ') : ''
   return (
-    <a href={href} className={`button ${formattedClasses}`}>
+    <a href={href} target='_blank' className={`button ${formattedClasses}`}>
       {text}{' '}
       <img
         src={`/icons/${icon}`}

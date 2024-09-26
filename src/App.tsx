@@ -4,6 +4,9 @@ import useSWR from 'swr'
 
 import Header from './components/Header/Header'
 import Title from './components/Title/Title'
+import Project from './components/Project/Project'
+
+import { projectProps } from './components/Project/Project'
 
 const ENDPOINT = '/data/data.json'
 
@@ -11,13 +14,25 @@ async function fetcher(endpoint: string) {
   const response = await fetch(endpoint)
   const json = await response.json()
 
+  if (!json.length) {
+    throw json
+  }
+
   return json
 }
 
 function App() {
-  const { data, error } = useSWR(ENDPOINT, fetcher)
+  const { data, isLoading, error } = useSWR(ENDPOINT, fetcher)
+  if (isLoading) {
+    return <p>Loading…</p>
+  }
 
-  console.log({ data, error })
+  if (error) {
+    return <p>Something's gone wrong</p>
+  }
+
+  // Create the typescript object for data
+  const dataObjects: projectProps[] = data === 'undefined' ? [] : data
 
   return (
     <>
@@ -42,9 +57,20 @@ function App() {
         <div className='wrapper'>
           <Title firstLine='Work' />
           <div className='projects'>
-            {/* {data.map((item) => {
-
-            })} */}
+            {dataObjects?.map((item) => {
+              return (
+                <Project
+                  key={item.id}
+                  title={item.title}
+                  subtitle={item.subtitle}
+                  shortDesc={item.shortDesc}
+                  link={item.link}
+                  linkText={item.linkText}
+                  repoLink={item.repoLink}
+                  image={item.image}
+                />
+              )
+            })}
           </div>
         </div>
       </section>

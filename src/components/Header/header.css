@@ -1,7 +1,7 @@
 header {
   background-color: var(--primary);
-  border-bottom: var(--base-border);
-  border-top: var(--base-border);
+  border: var(--base-border);
+
   position: fixed;
   top: 0;
   left: 0;
@@ -10,7 +10,8 @@ header {
   .wrapper {
     display: flex;
     justify-content: space-between;
-    border-right: var(--base-border);
+    border: none;
+    /* border-right: var(--base-border); */
   }
   nav {
     padding: 16px 0;

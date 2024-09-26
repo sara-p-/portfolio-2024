@@ -1,11 +1,11 @@
 import './project.css'
 
-import ButtonLink from '../ButtonLink/ButtonLink'
+import Button from '../Button/Button'
 
-type projectProps = {
-  id: string
+export interface projectProps {
+  id?: string
   title: string
-  subTitle: string
+  subtitle: string
   shortDesc: string
   stack?: string
   cat?: string
@@ -17,9 +17,8 @@ type projectProps = {
 }
 
 function Project({
-  id,
   title,
-  subTitle,
+  subtitle,
   shortDesc,
   link,
   linkText,
@@ -29,33 +28,43 @@ function Project({
   const buttonText: string =
     linkText !== '' ? `Visit ${linkText}` : `Visit ${title}`
 
+  const shortTextArray: string[] = shortDesc.split('\\n')
+
+  console.log(shortTextArray)
+
   // const categories: string[] = cat?.split(', ')
   // const stacks: string[] = stack?.split(', ')
 
   return (
-    <div className='project' key={id}>
+    <div className='project'>
       <div className='project-wrapper'>
-        <div className='col'>
-          <img
-            className='project-image'
-            src={`/screenshots/${image}`}
-            alt={`Screenshot of ${title} website.`}
-          />
+        <div className='project-col'>
+          <figure className='project-figure'>
+            <img
+              className='project-image'
+              src={`/screenshots/${image}`}
+              alt={`Screenshot of ${title} website.`}
+            />
+          </figure>
         </div>
-        <div className='col'>
+        <div className='project-col'>
           <div className='project-content'>
             <h2 className='project-title'>{title}</h2>
-            <h3 className='project-subtitle'>{subTitle}</h3>
-            <div className='project-short-desc'>{shortDesc}</div>
+            <h3 className='project-subtitle'>{subtitle}</h3>
+            <div className='project-short-desc'>
+              {shortTextArray.map((line) => {
+                return <p>{line.replace('\\n', '')}</p>
+              })}
+            </div>
             <div className='buttons'>
-              <ButtonLink
+              <Button
                 text={buttonText}
                 href={link}
                 icon={'external-link.svg'}
                 classes={['outline']}
               />
               {repoLink && (
-                <ButtonLink
+                <Button
                   text='Go to repo'
                   href={repoLink}
                   icon={'external-link.svg'}
