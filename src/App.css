@@ -8,9 +8,21 @@
   }
   .title-box {
     margin: 75px 0 3em;
+    h1 {
+      margin-bottom: 0;
+    }
   }
   .outro {
     margin-bottom: 1em;
+    h2 {
+      margin-bottom: 8px;
+      /* @media only screen and (min-width: 768px) {
+        margin-bottom: 24px;
+      } */
+    }
+    p {
+      margin-bottom: 8px;
+    }
   }
 }
 
