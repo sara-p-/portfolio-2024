@@ -30,8 +30,6 @@ function Project({
 
   const shortTextArray: string[] = shortDesc.split('\\n')
 
-  console.log(shortTextArray)
-
   // const categories: string[] = cat?.split(', ')
   // const stacks: string[] = stack?.split(', ')
 

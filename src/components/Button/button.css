@@ -2,7 +2,7 @@
   z-index: 1;
   display: block;
   position: relative;
-  margin-top: 1.25rem;
+  /* margin-top: 1em; */
   display: flex;
   gap: 1em;
   justify-content: flex-start;

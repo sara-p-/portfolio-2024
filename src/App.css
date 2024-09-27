@@ -1,12 +1,21 @@
 #home {
-  height: calc(100% - 75px);
-  margin-top: 70px;
+  /* height: calc(100% - 75px);
+  margin-top: 70px; */
   .wrapper {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
   }
+  .title-box {
+    margin: 75px 0 3em;
+  }
   .outro {
     margin-bottom: 1em;
+  }
+}
+
+#about {
+  h3:last-of-type {
+    margin: 2em 0;
   }
 }
