@@ -1,18 +1,22 @@
 .buttons {
   z-index: 1;
-  display: block;
   position: relative;
-  /* margin-top: 1em; */
   display: flex;
-  gap: 1em;
+  gap: 12px;
   justify-content: flex-start;
+  flex-direction: column;
+  @media only screen and (min-width: 768px) {
+    gap: 1em;
+    flex-direction: row;
+  }
 }
 
 .button {
   &.outline {
     position: relative;
     display: inline-block;
-    padding: 10px 15px;
+    width: fit-content;
+    padding: 15px;
     font-family: 'Open Sans', sans-serif;
     font-size: 1em;
     font-weight: 400;
@@ -21,13 +25,12 @@
     background-color: transparent;
     border: 3px solid var(--primary);
     transition: all 300ms ease-in-out;
-    user-select: none;
-    vertical-align: middle;
-    appearance: none;
     box-sizing: content-box;
     cursor: pointer;
     background: #ffffff;
-    /* z-index: 1; */
+    @media only screen and (min-width: 768px) {
+      padding: 10px 15px;
+    }
     &:hover {
       background-color: var(--secondary);
     }
@@ -47,9 +50,18 @@
       top: 5px;
       left: 5px;
     }
+    .button-wrapper {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+    }
     .button-link-image {
-      width: 16px;
+      width: 13px;
       height: auto;
+      @media only screen and (min-width: 768px) {
+        width: 16px;
+      }
     }
   }
 }
