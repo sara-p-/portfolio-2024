@@ -7,6 +7,7 @@ import Title from './components/Title/Title'
 import Project from './components/Project/Project'
 
 import { projectProps } from './components/Project/Project'
+import Footer from './components/Footer/Footer'
 
 const ENDPOINT = '/data/data.json'
 
@@ -119,6 +120,7 @@ function App() {
           </div>
         </div>
       </section>
+      <Footer />
     </>
   )
 }

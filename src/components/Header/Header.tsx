@@ -1,6 +1,7 @@
 import './header.css'
 import Link from '../Link/Link'
-// import bars from '/bars-solid.svg'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faBars } from '@fortawesome/free-solid-svg-icons'
 
 function Header() {
   return (
@@ -9,7 +10,7 @@ function Header() {
         <a href='#' className='logo'>
           SP
         </a>
-        <nav className='nav'>
+        <nav className='nav' aria-label='primary'>
           <ul className='menu'>
             <li className='menu-item'>
               <Link href={'#'} linkText={'home'} />
@@ -29,7 +30,7 @@ function Header() {
           </ul>
         </nav>
         <button className='mobile-menu-button'>
-          <img src={'/icons/bars.svg'} alt='Open Mobile menu' />
+          <FontAwesomeIcon icon={faBars} />
           <span className='visually-hidden'>Open the Mobile Menu</span>
         </button>
       </div>

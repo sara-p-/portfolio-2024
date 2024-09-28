@@ -1,6 +1,7 @@
 import './project.css'
 
-import Button from '../Button/Button'
+import ButtonLink from '../ButtonLink/ButtonLink'
+import { faArrowUpRightFromSquare } from '@fortawesome/free-solid-svg-icons'
 
 export interface projectProps {
   id?: string
@@ -55,17 +56,17 @@ function Project({
               })}
             </div>
             <div className='buttons'>
-              <Button
+              <ButtonLink
                 text={buttonText}
                 href={link}
-                icon={'external-link.svg'}
+                icon={faArrowUpRightFromSquare}
                 classes={['outline']}
               />
               {repoLink && (
-                <Button
+                <ButtonLink
                   text='Go to repo'
                   href={repoLink}
-                  icon={'external-link.svg'}
+                  icon={faArrowUpRightFromSquare}
                   classes={['outline']}
                 />
               )}

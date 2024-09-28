@@ -50,18 +50,24 @@
       top: 5px;
       left: 5px;
     }
-    .button-wrapper {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 6px;
-    }
-    .button-link-image {
-      width: 13px;
-      height: auto;
-      @media only screen and (min-width: 768px) {
-        width: 16px;
-      }
-    }
+  }
+}
+
+.button-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+}
+.icon {
+  width: 13px;
+  height: auto;
+  color: var(--primary);
+  /* &:hover,
+  &:focus {
+    color: var(--accent);
+  } */
+  @media only screen and (min-width: 768px) {
+    width: 16px;
   }
 }

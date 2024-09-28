@@ -1,6 +1,6 @@
 import './link.css'
 
-type linkProps = {
+export interface linkProps {
   href: string
   linkText: string
 }
