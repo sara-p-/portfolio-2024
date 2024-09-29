@@ -2,6 +2,7 @@ import './header.css'
 import Link from '../Link/Link'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faBars } from '@fortawesome/free-solid-svg-icons'
+import Toggle from '../Toggle/Toggle'
 
 function Header() {
   return (
@@ -24,10 +25,8 @@ function Header() {
             <li className='menu-item'>
               <Link href={'#'} linkText={'contact'} />
             </li>
-            <li className='menu-item'>
-              <Link href={'#'} linkText={'theme'} />
-            </li>
           </ul>
+          <Toggle />
         </nav>
         <button className='mobile-menu-button'>
           <FontAwesomeIcon icon={faBars} />

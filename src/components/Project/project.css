@@ -64,7 +64,6 @@
   width: 100%;
   max-width: initial;
   box-shadow: 3px 3px 15px 0px #777777;
-  /* margin-bottom: 1em; */
   @media only screen and (min-width: 768px) {
     margin-bottom: 0;
     height: 500px;
@@ -75,8 +74,15 @@
   }
 }
 
+.theme-dark .project-image {
+  box-shadow: none;
+  /* border: 3px solid var(--primary); */
+}
+
 .project-content {
   margin: 0;
+  h2 {
+  }
   @media only screen and (min-width: 768px) {
     margin: 2em 2em 0 0;
   }

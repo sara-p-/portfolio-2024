@@ -8,33 +8,22 @@ import Project from './components/Project/Project'
 
 import { projectProps } from './components/Project/Project'
 import Footer from './components/Footer/Footer'
-
-const ENDPOINT = '/data/data.json'
-
-async function fetcher(endpoint: string) {
-  const response = await fetch(endpoint)
-  const json = await response.json()
-
-  if (!json.length) {
-    throw json
-  }
-
-  return json
-}
+import { useEffect } from 'react'
+import { keepTheme } from './helpers/themes'
+import { fetcher } from './helpers/utils'
+import { ENDPOINT } from './globals/global-variables'
 
 function App() {
-  const { data, isLoading, error } = useSWR(ENDPOINT, fetcher)
-  if (isLoading) {
-    return <p>Loading…</p>
-  }
-
-  if (error) {
-    return <p>Something's gone wrong</p>
-  }
+  // ************** Setting the Theme mode ***************//
+  useEffect(() => {
+    keepTheme()
+  }, [])
+  // *************** FETCHING THE DATA *****************//
+  const { data } = useSWR(ENDPOINT, fetcher)
 
   // Create the typescript object for data
   const dataObjects: projectProps[] =
-    data === 'undefined' ? [] : [...data].reverse()
+    data === undefined ? [] : [...data].reverse()
 
   return (
     <>

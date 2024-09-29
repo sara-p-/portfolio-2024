@@ -1,0 +1,32 @@
+.toggle {
+}
+
+.toggle__input {
+  height: 0;
+  width: 0;
+  visibility: hidden;
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+
+.toggle__label {
+  display: inline-block;
+  height: 100%;
+  width: 65px;
+  /* padding: 0 24px; */
+  border-left: var(--base-border);
+  font-size: 28px;
+  cursor: pointer;
+  &:hover {
+    color: var(--secondary);
+    background-color: var(--primary);
+  }
+}
+
+.toggle__wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+}

@@ -1,7 +1,5 @@
 header {
-  background-color: var(--primary);
-  border: var(--base-border);
-
+  background-color: transparent;
   position: fixed;
   top: 0;
   left: 0;
@@ -12,15 +10,23 @@ header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    border: none;
 
-    /* border-right: var(--base-border); */
+    @media only screen and (min-width: 768px) {
+      padding-right: 0;
+    }
   }
   nav {
-    padding: 16px 0;
     display: none;
     @media only screen and (min-width: 768px) {
-      display: block;
+      display: flex;
+    }
+    .menu {
+      padding: 16px 0;
+      .menu-item {
+        &:last-of-type {
+          margin-right: 1rem;
+        }
+      }
     }
     a {
       overflow-x: hidden;
@@ -41,7 +47,6 @@ header {
     }
   }
   .mobile-menu-button {
-    padding: 16px 0;
     font-size: 28px;
     border: none;
     background-color: transparent;
@@ -72,5 +77,20 @@ header {
     @media only screen and (min-width: 768px) {
       font-size: 32px;
     }
+  }
+}
+
+button.theme-toggle {
+  color: var(--primary);
+  background-color: var(--secondary);
+  border: none;
+  border-left: var(--base-border);
+  padding: 0 24px;
+  appearance: none;
+  cursor: pointer;
+  font-size: 28px;
+  &:hover {
+    color: var(--secondary);
+    background-color: var(--primary);
   }
 }
