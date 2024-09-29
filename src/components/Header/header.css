@@ -42,7 +42,7 @@ header {
   }
   .mobile-menu-button {
     padding: 16px 0;
-    font-size: 24px;
+    font-size: 28px;
     border: none;
     background-color: transparent;
     color: var(--primary);
@@ -62,11 +62,12 @@ header {
   }
   a.logo {
     padding: 16px 0;
-    font-size: 24px;
+    font-size: 28px;
     font-family: 'Oswald', sans-serif;
     line-height: 1;
     text-transform: uppercase;
-    font-weight: 800;
+    font-weight: 900;
+    /* letter-spacing: 1px; */
     color: var(--primary);
     @media only screen and (min-width: 768px) {
       font-size: 32px;

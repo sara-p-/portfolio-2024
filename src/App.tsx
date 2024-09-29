@@ -111,7 +111,7 @@ function App() {
             <p>
               Mightily is known for its incredible work and creativity. Working
               with such talented designers and developers on some truly
-              challenging sites took my skillset to a whole new level.
+              challenging sites took my skill set to a new level.
             </p>
             <p>
               I’ve now been a developer for over 7 years and absolutely love it.
