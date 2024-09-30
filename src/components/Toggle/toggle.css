@@ -37,8 +37,9 @@
     height: 100dvh;
     width: 100%;
     bottom: 0;
-    left: 0;
+    left: 100%;
     pointer-events: none;
+    transition: transform 300ms;
     label {
       pointer-events: all;
       position: absolute;
@@ -73,4 +74,8 @@
       }
     }
   }
+}
+
+.mobile-menu.active .toggle {
+  transform: translateX(-100%);
 }

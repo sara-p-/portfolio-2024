@@ -1,23 +1,33 @@
 import './header.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faArrowLeft, faBars } from '@fortawesome/free-solid-svg-icons'
+import { faArrowRight, faBars } from '@fortawesome/free-solid-svg-icons'
 import Nav from '../Nav/Nav'
 import { useRef } from 'react'
 
 function Header() {
-  const mobileMenuRef = useRef<HTMLElement>()
-  function handleMobileClick(ele: HTMLElement): void {
-    ele.classList.add('active')
+  const mobileMenuRef = useRef<HTMLInputElement | null>(null)
+  function handleMobileClick(open: boolean): void {
+    if (mobileMenuRef.current) {
+      if (open) {
+        mobileMenuRef.current.classList.remove('active')
+      } else {
+        mobileMenuRef.current.classList.add('active')
+      }
+    }
   }
 
   return (
     <header className='header'>
       <div ref={mobileMenuRef} className='mobile-menu'>
         <div className='menu-header'>
-          <button className='mobile-menu-back-button'>
-            <FontAwesomeIcon icon={faArrowLeft} />
+          <button
+            className='mobile-menu-back-button'
+            onClick={() => {
+              handleMobileClick(true)
+            }}
+          >
+            <FontAwesomeIcon icon={faArrowRight} />
           </button>
-          <h2>Menu</h2>
         </div>
         <Nav label={'mobile'} />
       </div>
@@ -29,7 +39,7 @@ function Header() {
         <button
           className='mobile-menu-button'
           onClick={() => {
-            handleMobileClick(mobileMenuRef.current)
+            handleMobileClick(false)
           }}
         >
           <FontAwesomeIcon icon={faBars} />

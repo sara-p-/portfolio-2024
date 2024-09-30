@@ -11,6 +11,7 @@ header {
     justify-content: space-between;
     align-items: center;
     position: relative;
+    border-top: var(--base-border);
     @media only screen and (min-width: 768px) {
       padding-right: 0;
     }
@@ -88,9 +89,6 @@ button.theme-toggle {
   .menu-header {
     width: auto;
     height: auto;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
     padding: 12px 1em;
     border-bottom: var(--base-border);
     h2:before {

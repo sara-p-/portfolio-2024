@@ -77,15 +77,14 @@ body {
 
 .section {
   height: auto;
-  min-height: 100vh;
+  min-height: 100dvh;
   width: 100%;
   background-color: transparent;
-  margin-top: -7px;
   position: relative;
   box-sizing: border-box;
   display: block;
   .wrapper {
-    min-height: 100vh;
+    min-height: 100dvh;
   }
 }
 
@@ -95,7 +94,9 @@ body {
   max-width: 1400px;
   height: 100%;
   min-height: 100%;
-  border: var(--base-border);
+  border-left: var(--base-border);
+  border-bottom: var(--base-border);
+  border-right: var(--base-border);
   background-color: var(--secondary);
   padding: 0 1rem;
   overflow-x: hidden;
