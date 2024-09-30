@@ -9,9 +9,9 @@ import { faPaperPlane } from '@fortawesome/free-solid-svg-icons'
 
 function Footer() {
   return (
-    <footer className='footer'>
-      <div className='wrapper footer__wrapper'>
-        <nav className='footer__nav'>
+    <footer id='contact' className='footer'>
+      <div className='wrapper'>
+        <nav className='nav' aria-label='social'>
           <ul className='menu footer__menu'>
             <li className='menu-item footer__menu-item'>
               <ButtonLink

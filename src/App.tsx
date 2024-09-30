@@ -12,6 +12,8 @@ import { useEffect } from 'react'
 import { keepTheme } from './helpers/themes'
 import { fetcher } from './helpers/utils'
 import { ENDPOINT } from './globals/global-variables'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faChevronDown } from '@fortawesome/free-solid-svg-icons'
 
 function App() {
   // ************** Setting the Theme mode ***************//
@@ -36,10 +38,7 @@ function App() {
             <p>I'm a web developer and artist</p>
             <button className='icon-button scroll-down-button'>
               <span className='visually-hidden'>Scroll down</span>
-              <img
-                src={'/icons/chevron-down.svg'}
-                alt='Arrow icon pointing down'
-              />
+              <FontAwesomeIcon icon={faChevronDown} />
             </button>
           </div>
         </div>

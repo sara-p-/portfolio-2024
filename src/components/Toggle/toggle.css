@@ -1,32 +1,76 @@
 .toggle {
-}
-
-.toggle__input {
-  height: 0;
-  width: 0;
-  visibility: hidden;
-  position: absolute;
-  left: 0;
-  top: 0;
-}
-
-.toggle__label {
-  display: inline-block;
-  height: 100%;
-  width: 65px;
-  /* padding: 0 24px; */
-  border-left: var(--base-border);
-  font-size: 28px;
-  cursor: pointer;
-  &:hover {
-    color: var(--secondary);
-    background-color: var(--primary);
+  input {
+    height: 0;
+    width: 0;
+    visibility: hidden;
+    position: absolute;
+    left: 0;
+    top: 0;
+  }
+  label {
+    display: inline-block;
+    height: 100%;
+    width: 65px;
+    /* padding: 0 24px; */
+    border-left: var(--base-border);
+    font-size: 28px;
+    cursor: pointer;
+    box-sizing: border-box;
+    &:hover {
+      color: var(--secondary);
+      background-color: var(--primary);
+    }
+    .label-wrapper {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100%;
+    }
   }
 }
 
-.toggle__wrapper {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 100%;
+/* Mobile Menu */
+.mobile-menu {
+  .toggle {
+    border: none;
+    position: fixed;
+    height: 100dvh;
+    width: 100%;
+    bottom: 0;
+    left: 0;
+    pointer-events: none;
+    label {
+      pointer-events: all;
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: auto;
+      padding: 16px 24px;
+      border: none;
+      border-top: var(--base-border);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background-color: var(--primary);
+      color: var(--secondary);
+      .label-wrapper {
+        justify-content: space-between;
+        width: 100%;
+      }
+      .visually-hidden {
+        clip: unset;
+        clip-path: none;
+        height: auto;
+        overflow: visible;
+        position: relative;
+        white-space: unset;
+        width: auto;
+        order: 2;
+        display: block;
+        text-transform: lowercase;
+        font-size: 24px;
+      }
+    }
+  }
 }

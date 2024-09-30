@@ -10,42 +10,12 @@ header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-
+    position: relative;
     @media only screen and (min-width: 768px) {
       padding-right: 0;
     }
   }
-  nav {
-    display: none;
-    @media only screen and (min-width: 768px) {
-      display: flex;
-    }
-    .menu {
-      padding: 16px 0;
-      .menu-item {
-        &:last-of-type {
-          margin-right: 1rem;
-        }
-      }
-    }
-    a {
-      overflow-x: hidden;
-      &::after {
-        content: '';
-        position: absolute;
-        top: 100%;
-        left: -100%;
-        width: 100%;
-        height: 5px;
-        background-color: var(--primary);
-        transition: all 300ms;
-        margin-top: -5px;
-      }
-      &:hover::after {
-        transform: translateX(100%);
-      }
-    }
-  }
+
   .mobile-menu-button {
     font-size: 28px;
     border: none;
@@ -92,5 +62,48 @@ button.theme-toggle {
   &:hover {
     color: var(--secondary);
     background-color: var(--primary);
+  }
+}
+
+/* Mobile Menu */
+.mobile-menu {
+  position: fixed;
+  top: 0;
+  left: 100%;
+  width: 100%;
+  height: 100dvh;
+  background-color: var(--secondary);
+  border: var(--base-border);
+  color: var(--primary);
+  z-index: 3;
+  display: block;
+  transition: transform 300ms;
+  box-sizing: border-box;
+  &.active {
+    transform: translateX(-100%);
+  }
+  @media only screen and (min-width: 768px) {
+    display: none;
+  }
+  .menu-header {
+    width: auto;
+    height: auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 1em;
+    border-bottom: var(--base-border);
+    h2:before {
+      content: none;
+    }
+  }
+  .mobile-menu-back-button {
+    font-size: 2em;
+    background-color: transparent;
+    padding: 0;
+    margin: 0;
+    border: none;
+    appearance: none;
+    cursor: pointer;
   }
 }
