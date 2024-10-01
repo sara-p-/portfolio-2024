@@ -36,11 +36,11 @@ function Toggle() {
         type='checkbox'
         id={inputId}
         checked={isChecked}
-        onClick={handleOnClick}
+        onChange={handleOnClick}
       />
       <label htmlFor={inputId}>
         <div className='label-wrapper'>
-          <span className='visually-hidden'>Theme</span>
+          <span className='visually-hidden'>Toggle dark/light theme</span>
           {isChecked ? (
             <FontAwesomeIcon icon={faSun} />
           ) : (

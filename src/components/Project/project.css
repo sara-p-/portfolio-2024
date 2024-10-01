@@ -2,7 +2,7 @@
   width: 100%;
   position: relative;
   display: block;
-  margin-bottom: 5em;
+  margin-bottom: 5rem;
   &:nth-child(even) {
     .project-col:first-of-type {
       order: 2;
@@ -14,9 +14,9 @@
     .project-col:last-of-type {
       order: 1;
       .project-content {
-        margin: 2em 0 0 0;
-        @media only screen and (min-width: 768px) {
-          margin: 2em 0 0 2em;
+        margin: 2rem 0 0 0;
+        @media only screen and (min-width: 1024px) {
+          margin: 2rem 0 0 2rem;
         }
       }
     }
@@ -27,8 +27,8 @@
   width: auto;
   display: block;
   position: relative;
-  @media only screen and (min-width: 768px) {
-    gap: 3em;
+  @media only screen and (min-width: 1024px) {
+    gap: 3rem;
     display: flex;
   }
 }
@@ -38,9 +38,9 @@
   position: relative;
   display: block;
   &:first-of-type {
-    margin-bottom: 2em;
+    margin-bottom: 2rem;
   }
-  @media only screen and (min-width: 768px) {
+  @media only screen and (min-width: 1024px) {
     flex: 1 1 50%;
     &:first-of-type {
       margin-bottom: 0;
@@ -53,7 +53,7 @@
   height: auto;
   margin: 0;
   padding: 0;
-  @media only screen and (min-width: 768px) {
+  @media only screen and (min-width: 1024px) {
     width: 100%;
     height: 500px;
   }
@@ -64,7 +64,7 @@
   width: 100%;
   max-width: initial;
   box-shadow: 3px 3px 15px 0px #777777;
-  @media only screen and (min-width: 768px) {
+  @media only screen and (min-width: 1024px) {
     margin-bottom: 0;
     height: 500px;
     position: absolute;
@@ -81,18 +81,18 @@
 
 .project-content {
   margin: 0;
-  h2 {
+  @media only screen and (min-width: 1024px) {
+    margin: 2rem 2rem 0 0;
   }
-  @media only screen and (min-width: 768px) {
-    margin: 2em 2em 0 0;
+  h3 {
+    margin-bottom: 1rem;
   }
-}
-
-.project-short-desc {
-  margin-bottom: 1.3em;
-  margin-top: 1em;
-  @media only screen and (min-width: 768px) {
-    margin-bottom: 2em;
-    margin-top: 1.5em;
+  .project-short-desc {
+    margin-bottom: 1.3rem;
+    /* margin-top: 1rem; */
+    @media only screen and (min-width: 1024px) {
+      margin-bottom: 2rem;
+      margin-top: 1.5rem;
+    }
   }
 }

@@ -37,7 +37,7 @@ header {
     }
   }
   a.logo {
-    padding: 16px 0;
+    padding: 0;
     font-size: 28px;
     font-family: 'Oswald', sans-serif;
     line-height: 1;
@@ -89,14 +89,14 @@ button.theme-toggle {
   .menu-header {
     width: auto;
     height: auto;
-    padding: 12px 1em;
+    padding: 12px 24px;
     border-bottom: var(--base-border);
     h2:before {
       content: none;
     }
   }
   .mobile-menu-back-button {
-    font-size: 2em;
+    font-size: 2rem;
     background-color: transparent;
     padding: 0;
     margin: 0;

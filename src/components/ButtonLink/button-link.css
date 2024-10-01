@@ -6,7 +6,7 @@
   justify-content: flex-start;
   flex-direction: column;
   @media only screen and (min-width: 768px) {
-    gap: 1em;
+    gap: 1rem;
     flex-direction: row;
   }
 }
@@ -16,38 +16,44 @@
     position: relative;
     display: inline-block;
     width: fit-content;
-    padding: 15px;
+    padding: 8px 1rem;
     font-family: 'Open Sans', sans-serif;
-    font-size: 1em;
+    font-size: 1rem;
     font-weight: 400;
     color: var(--primary);
     background-color: transparent;
-    border: 3px solid var(--primary);
+    border: 2px solid var(--primary);
     transition: all 300ms ease-in-out;
     box-sizing: content-box;
     cursor: pointer;
     background: var(--secondary);
-    @media only screen and (min-width: 768px) {
-      padding: 10px 15px;
-    }
     &:hover {
       background-color: var(--secondary);
     }
     &::after {
       content: '';
       position: absolute;
-      top: -3px;
-      left: -3px;
+      top: -2px;
+      left: -2px;
       z-index: -1;
       width: 100%;
       height: 100%;
-      border: 3px solid var(--primary);
+      border: 2px solid var(--primary);
       background: var(--secondary);
       transition: top 300ms, left 300ms;
     }
     &:hover::after {
       top: 5px;
       left: 5px;
+    }
+    @media only screen and (min-width: 768px) {
+      border: 3px solid var(--primary);
+      padding: 10px 15px;
+      &::after {
+        border: 3px solid var(--primary);
+        top: -3px;
+        left: -3px;
+      }
     }
   }
 }

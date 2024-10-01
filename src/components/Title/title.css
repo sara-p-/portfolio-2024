@@ -1,10 +1,15 @@
 .title-box {
-  margin: 0.5em 0 3em;
+  margin: 0.5rem 0 3rem;
   @media only screen and (min-width: 768px) {
-    margin: 0.5em 0 5em;
+    margin: 0.5rem 0 5rem;
   }
 }
 
-.title span {
+.word {
   display: block;
+  overflow-y: hidden;
+}
+
+.letter {
+  transform: translateY(-100%);
 }

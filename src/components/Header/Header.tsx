@@ -5,7 +5,8 @@ import Nav from '../Nav/Nav'
 import { useRef } from 'react'
 
 function Header() {
-  const mobileMenuRef = useRef<HTMLInputElement | null>(null)
+  const mobileMenuRef = useRef<HTMLDivElement | null>(null)
+
   function handleMobileClick(open: boolean): void {
     if (mobileMenuRef.current) {
       if (open) {

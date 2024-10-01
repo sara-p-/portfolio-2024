@@ -7,13 +7,13 @@
     justify-content: space-between;
   }
   .title-box {
-    margin: 84px 0 3em;
+    margin: 84px 0 3rem;
     h1 {
       margin-bottom: 0;
     }
   }
   .outro {
-    margin-bottom: 1em;
+    margin-bottom: 1rem;
     h2 {
       margin-bottom: 8px;
       /* @media only screen and (min-width: 768px) {
@@ -32,9 +32,9 @@
     margin-bottom: 24px;
   }
   h3:last-of-type {
-    margin: 2em 0 24px;
+    margin: 2rem 0 24px;
     @media only screen and (min-width: 768px) {
-      margin: 2em 0;
+      margin: 2rem 0;
     }
   }
 }

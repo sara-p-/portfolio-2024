@@ -24,6 +24,15 @@
   }
   li {
     margin: 0;
+    @media only screen and (min-width: 768px) {
+      margin-right: 1rem;
+      &:last-of-type {
+        margin-right: 0;
+      }
+    }
+  }
+  a::after {
+    content: none;
   }
   .footer__link .icon {
     width: 32px;

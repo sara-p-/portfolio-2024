@@ -47,20 +47,22 @@ function App() {
         <div className='wrapper'>
           <Title firstLine='Work' />
           <div className='projects'>
-            {dataObjects?.map((item) => {
-              return (
-                <Project
-                  key={item.id}
-                  title={item.title}
-                  subtitle={item.subtitle}
-                  shortDesc={item.shortDesc}
-                  link={item.link}
-                  linkText={item.linkText}
-                  repoLink={item.repoLink}
-                  image={item.image}
-                />
-              )
-            })}
+            {dataObjects.length &&
+              dataObjects.map((item) => {
+                return (
+                  <Project
+                    key={item.id}
+                    id={item.id}
+                    title={item.title}
+                    subtitle={item.subtitle}
+                    shortDesc={item.shortDesc}
+                    link={item.link}
+                    linkText={item.linkText}
+                    repoLink={item.repoLink}
+                    image={item.image}
+                  />
+                )
+              })}
           </div>
         </div>
       </section>
