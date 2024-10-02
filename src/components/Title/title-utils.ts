@@ -1,3 +1,5 @@
+import { sumPrefixes } from '../../helpers/utils'
+
 // Turn the title string into an array of letters
 export function splitTitle(title: string | undefined) {
   if (!title) {
@@ -20,16 +22,17 @@ export function splitTitle(title: string | undefined) {
 export function getLetterWidths(
   refs: React.MutableRefObject<HTMLSpanElement[]>
 ) {
-  let widths: number[]
+  let widths: { width: number; x: number }[] = []
   if (refs.current) {
     widths = refs.current?.map((ref) => {
       if (ref) {
-        return ref.getBoundingClientRect().width
+        return {
+          width: ref.getBoundingClientRect().width,
+          x: ref.getBoundingClientRect().x,
+        }
       }
-      return 0
+      return { width: 0, x: 0 }
     })
-  } else {
-    widths = [0]
   }
 
   return widths
@@ -40,16 +43,29 @@ export function getLettersWidthAndHeight(
   refs: React.MutableRefObject<HTMLSpanElement[]>
 ) {
   // Get the height of the letters to use as the height of the words
-  // const wordHeight = refs.current[0].getBoundingClientRect().height
-  const wordHeight = 0
+  const wordHeight = refs.current[0].getBoundingClientRect().height
   // Get the widths of each letter in the word
-  const letterWidths = getLetterWidths(refs)
-  console.log(letterWidths)
+  const letterWidthsAndPosition = getLetterWidths(refs)
+
+  const letterWidths = letterWidthsAndPosition.map((item) => item.width)
+  // const lettersLeft = letterWidthsAndPosition.map((item) => item.x)
+
+  // console.log({ lettersLeft })
 
   // Get the sum of all the letter widths to figure out the total width of the word
   const wordWidth = letterWidths.reduce(
-    (accumulator: number, current: number) => accumulator + current
+    (accumulator: number, current: number) => {
+      return accumulator + current
+    },
+    0
   )
 
-  return { wordHeight, letterWidths, wordWidth }
+  // Create a new array that starts at zero, and removes the last item of the letterWidths array.
+  // We will use this array to calculate the left position of each letter
+  // Calculate the left position of each letter by incrementally adding items of the original array and returning the sums in a new array
+  const rawLettersLeft = sumPrefixes(letterWidths)
+
+  const lettersLeft = [...rawLettersLeft]
+
+  return { wordHeight, wordWidth, letterWidths, lettersLeft }
 }

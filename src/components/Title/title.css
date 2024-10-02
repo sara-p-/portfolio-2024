@@ -5,12 +5,24 @@
   }
 }
 
+h1.title {
+  line-height: 1;
+}
+
 .word {
   display: block;
   overflow-y: hidden;
   position: relative;
+  padding: 0;
+  margin: 0;
 }
 
 .letter {
-  transform: translateY(-100%);
+  padding: 0;
+  margin: 0;
+  display: inline-block;
+  position: absolute;
+  top: 0;
+  /* left: 0; */
+  /* transform: translateY(-100%); */
 }

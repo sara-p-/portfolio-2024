@@ -14,12 +14,13 @@ function Title({ firstLine, secondLine }: titleProps) {
     wordHeight: 0,
     wordWidth: 0,
     letterWidths: [0],
+    lettersLeft: [0],
   })
-  const [secondWord, setSecondWord] = useState({
-    wordHeight: 0,
-    wordWidth: 0,
-    letterWidths: [0],
-  })
+  // const [secondWord, setSecondWord] = useState({
+  //   wordHeight: 0,
+  //   wordWidth: 0,
+  //   letterWidths: [0],
+  // })
   // Grab a reference to the span elements that hold the letters
   const firstLetters = useRef<HTMLSpanElement[]>([])
   const secondLetters = useRef<HTMLSpanElement[]>([])
@@ -34,23 +35,22 @@ function Title({ firstLine, secondLine }: titleProps) {
     if (!firstLetters.current) {
       return
     }
-
     // Get the height and width of the word, as well as the individual letters
-    // const firstWordMeasurements = getLettersWidthAndHeight(firstLetters)
-    // const firstObject = getLettersWidthAndHeight(firstLetters)
     setFirstWord(getLettersWidthAndHeight(firstLetters))
-    if (secondWord) {
-      // const secondWordMeasurements = getLettersWidthAndHeight(secondLetters)
-      setSecondWord(getLettersWidthAndHeight(secondLetters))
-    }
-  }, [secondWord])
+    // if (secondWord) {
+    //   setSecondWord(getLettersWidthAndHeight(secondLetters))
+    // }
+  }, [])
 
   return (
     <div className='title-box'>
       <h1 className='title'>
         <span
           className='word first-line'
-          style={{ width: `${firstWord.wordHeight}px` }}
+          style={{
+            height: `${firstWord.wordHeight}px`,
+            width: `${firstWord.wordWidth}px`,
+          }}
         >
           {first &&
             first.map((item, index) => {
@@ -58,7 +58,9 @@ function Title({ firstLine, secondLine }: titleProps) {
                 <span
                   key={item.id}
                   className='letter'
-                  style={{}}
+                  style={{
+                    left: `${firstWord.lettersLeft[index]}px`,
+                  }}
                   ref={(ref) => {
                     if (ref) firstLetters.current[index] = ref
                   }}
