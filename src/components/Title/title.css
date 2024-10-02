@@ -8,6 +8,7 @@
 .word {
   display: block;
   overflow-y: hidden;
+  position: relative;
 }
 
 .letter {
