@@ -52,7 +52,6 @@ function App() {
                 return (
                   <Project
                     key={item.id}
-                    id={item.id}
                     title={item.title}
                     subtitle={item.subtitle}
                     shortDesc={item.shortDesc}

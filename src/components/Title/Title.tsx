@@ -1,7 +1,11 @@
 // import { useRef } from 'react'
 import './title.css'
-import { getLettersWidthAndHeight, splitTitle } from './title-utils'
-import { useEffect, useRef, useState } from 'react'
+import gsap from 'gsap'
+import { useGSAP } from '@gsap/react'
+import { SplitText } from 'gsap/SplitText'
+import { useId, useRef } from 'react'
+
+gsap.registerPlugin(SplitText)
 
 type titleProps = {
   firstLine: string
@@ -9,82 +13,56 @@ type titleProps = {
 }
 
 function Title({ firstLine, secondLine }: titleProps) {
-  // Get/Set the value of the word/letter measurements (through the useEffect hook)
-  const [firstWord, setFirstWord] = useState({
-    wordHeight: 0,
-    wordWidth: 0,
-    letterWidths: [0],
-    lettersLeft: [0],
-  })
-  // const [secondWord, setSecondWord] = useState({
-  //   wordHeight: 0,
-  //   wordWidth: 0,
-  //   letterWidths: [0],
-  // })
-  // Grab a reference to the span elements that hold the letters
-  const firstLetters = useRef<HTMLSpanElement[]>([])
-  const secondLetters = useRef<HTMLSpanElement[]>([])
-  // Split the words into an array of letters
-  const first: { id: string; letter: string }[] | undefined =
-    splitTitle(firstLine)
-  const second: { id: string; letter: string }[] | undefined =
-    splitTitle(secondLine)
+  const titleBox = useRef<HTMLDivElement | null>(null)
+  const id = useId()
+  const firstWord = `first-${id}`
+  const secondWord = `second-${id}`
 
-  // Calculate the pixel width of each letter span element and add it to an array
-  useEffect(() => {
-    if (!firstLetters.current) {
-      return
-    }
-    // Get the height and width of the word, as well as the individual letters
-    setFirstWord(getLettersWidthAndHeight(firstLetters))
-    // if (secondWord) {
-    //   setSecondWord(getLettersWidthAndHeight(secondLetters))
-    // }
-  }, [])
+  useGSAP(
+    () => {
+      const first = new SplitText(`#${CSS.escape(firstWord)}`, {
+        type: 'chars',
+      })
+      const second = new SplitText(`#${CSS.escape(secondWord)}`, {
+        type: 'chars',
+      })
+      const t1 = gsap.timeline()
+
+      t1.from(first.chars, {
+        duration: 0.6,
+        yPercent: -100,
+        stagger: 0.07,
+      })
+      t1.from(
+        second.chars,
+        {
+          duration: 0.6,
+          yPercent: -100,
+          stagger: 0.07,
+        },
+        '-=0.5'
+      )
+
+      // console.log({ words })
+      // gsap.from(words.chars, {
+      //   duration: 1,
+      //   yPercent: -100,
+      //   // autoAlpha: 0,
+      //   stagger: 0.05,
+      // })
+    },
+    { scope: titleBox }
+  )
 
   return (
-    <div className='title-box'>
+    <div className='title-box' ref={titleBox}>
       <h1 className='title'>
-        <span
-          className='word first-line'
-          style={{
-            height: `${firstWord.wordHeight}px`,
-            width: `${firstWord.wordWidth}px`,
-          }}
-        >
-          {first &&
-            first.map((item, index) => {
-              return (
-                <span
-                  key={item.id}
-                  className='letter'
-                  style={{
-                    left: `${firstWord.lettersLeft[index]}px`,
-                  }}
-                  ref={(ref) => {
-                    if (ref) firstLetters.current[index] = ref
-                  }}
-                >
-                  {item.letter}
-                </span>
-              )
-            })}
+        <span id={firstWord} className='word first-line'>
+          {firstLine}
         </span>
-        {second && (
-          <span className='word second-line'>
-            {second.map((item, index) => {
-              return (
-                <span
-                  key={item.id}
-                  className='letter'
-                  ref={(ref) => {
-                    if (ref) secondLetters.current[index] = ref
-                  }}
-                >
-                  {item.letter}
-                </span>
-              )
-            })}
+        {secondLine && (
+          <span id={secondWord} className='word second-line'>
+            {secondLine}
           </span>
         )}
       </h1>
