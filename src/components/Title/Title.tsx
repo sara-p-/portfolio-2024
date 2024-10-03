@@ -42,14 +42,6 @@ function Title({ firstLine, secondLine }: titleProps) {
         },
         '-=0.5'
       )
-
-      // console.log({ words })
-      // gsap.from(words.chars, {
-      //   duration: 1,
-      //   yPercent: -100,
-      //   // autoAlpha: 0,
-      //   stagger: 0.05,
-      // })
     },
     { scope: titleBox }
   )
