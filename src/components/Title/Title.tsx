@@ -3,7 +3,7 @@ import './title.css'
 import gsap from 'gsap'
 import { useGSAP } from '@gsap/react'
 import { SplitText } from 'gsap/SplitText'
-import { useId, useRef } from 'react'
+import { forwardRef, useId, useRef } from 'react'
 
 gsap.registerPlugin(SplitText)
 

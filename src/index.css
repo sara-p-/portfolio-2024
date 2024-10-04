@@ -75,19 +75,6 @@ body {
   font-size: 24px;
 }
 
-.section {
-  height: auto;
-  min-height: 100dvh;
-  width: 100%;
-  background-color: transparent;
-  position: relative;
-  box-sizing: border-box;
-  display: block;
-  .wrapper {
-    min-height: 100dvh;
-  }
-}
-
 .wrapper {
   width: auto;
   box-sizing: border-box;
