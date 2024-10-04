@@ -3,16 +3,17 @@ import './title.css'
 import gsap from 'gsap'
 import { useGSAP } from '@gsap/react'
 import { SplitText } from 'gsap/SplitText'
-import { forwardRef, useId, useRef } from 'react'
+import { useId, useRef } from 'react'
 
 gsap.registerPlugin(SplitText)
 
 type titleProps = {
   firstLine: string
   secondLine?: string
+  timeline?: GSAPTimeline
 }
 
-function Title({ firstLine, secondLine }: titleProps) {
+function Title({ firstLine, secondLine, timeline }: titleProps) {
   const titleBox = useRef<HTMLDivElement | null>(null)
   const id = useId()
   const firstWord = `first-${id}`
@@ -20,13 +21,17 @@ function Title({ firstLine, secondLine }: titleProps) {
 
   useGSAP(
     () => {
+      if (!timeline) {
+        return
+      }
+
       const first = new SplitText(`#${CSS.escape(firstWord)}`, {
         type: 'chars',
       })
       const second = new SplitText(`#${CSS.escape(secondWord)}`, {
         type: 'chars',
       })
-      const t1 = gsap.timeline()
+      const t1 = timeline
 
       t1.from(first.chars, {
         duration: 0.6,
@@ -46,6 +51,7 @@ function Title({ firstLine, secondLine }: titleProps) {
     { scope: titleBox }
   )
 
+  console.log(timeline)
   return (
     <div className='title-box' ref={titleBox}>
       <h1 className='title'>

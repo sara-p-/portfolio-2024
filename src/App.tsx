@@ -3,7 +3,6 @@ import './App.css'
 import useSWR from 'swr'
 
 import Header from './components/Header/Header'
-import Title from './components/Title/Title'
 import Section from './components/Section/Section'
 import Project, { projectProps } from './components/Project/Project'
 import Footer from './components/Footer/Footer'
@@ -26,11 +25,12 @@ function App() {
   const dataObjects: projectProps[] =
     data === undefined ? [] : [...data].reverse()
 
+  // *************** TITLE ANIMATIONS *****************//
+
   return (
     <>
       <Header></Header>
-      <Section id={'home'}>
-        <Title firstLine='Hello' secondLine='Beautiful' />
+      <Section id={'home'} firstLine='Hello' secondLine='Beautiful'>
         <div className='outro'>
           <h2>My name is Sara Pitt</h2>
           <p>I'm a web developer and artist</p>
@@ -40,8 +40,7 @@ function App() {
           </button>
         </div>
       </Section>
-      <Section id={'work'}>
-        <Title firstLine='Work' />
+      <Section id={'work'} firstLine='Work'>
         <div className='projects'>
           {dataObjects.length &&
             dataObjects.map((item) => {
@@ -60,8 +59,7 @@ function App() {
             })}
         </div>
       </Section>
-      <Section id={'about'}>
-        <Title firstLine='About' />
+      <Section id={'about'} firstLine='About'>
         <div className='content'>
           <h2>I’VE DONE SEVERAL THINGS</h2>
           <p>
