@@ -4,16 +4,17 @@ import gsap from 'gsap'
 import { useGSAP } from '@gsap/react'
 import { SplitText } from 'gsap/SplitText'
 import { useId, useRef } from 'react'
+import { ScrollTrigger } from 'gsap/ScrollTrigger'
 
-gsap.registerPlugin(SplitText)
+gsap.registerPlugin(SplitText, ScrollTrigger)
 
 type titleProps = {
   firstLine: string
   secondLine?: string
-  timeline?: GSAPTimeline
 }
 
-function Title({ firstLine, secondLine, timeline }: titleProps) {
+function Title({ firstLine, secondLine }: titleProps) {
+  const timeLine = useRef<GSAPTimeline | undefined>(undefined)
   const titleBox = useRef<HTMLDivElement | null>(null)
   const id = useId()
   const firstWord = `first-${id}`
@@ -21,24 +22,26 @@ function Title({ firstLine, secondLine, timeline }: titleProps) {
 
   useGSAP(
     () => {
-      if (!timeline) {
-        return
-      }
-
       const first = new SplitText(`#${CSS.escape(firstWord)}`, {
         type: 'chars',
       })
       const second = new SplitText(`#${CSS.escape(secondWord)}`, {
         type: 'chars',
       })
-      const t1 = timeline
 
-      t1.from(first.chars, {
+      timeLine.current = gsap.timeline({
+        scrollTrigger: {
+          trigger: titleBox.current,
+          start: 'top 60%',
+        },
+      })
+
+      timeLine.current.from(first.chars, {
         duration: 0.6,
         yPercent: -100,
         stagger: 0.07,
       })
-      t1.from(
+      timeLine.current.from(
         second.chars,
         {
           duration: 0.6,
@@ -47,11 +50,11 @@ function Title({ firstLine, secondLine, timeline }: titleProps) {
         },
         '-=0.5'
       )
+      console.log(timeLine)
     },
     { scope: titleBox }
   )
 
-  console.log(timeline)
   return (
     <div className='title-box' ref={titleBox}>
       <h1 className='title'>

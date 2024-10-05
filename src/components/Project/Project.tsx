@@ -2,6 +2,12 @@ import './project.css'
 
 import ButtonLink from '../ButtonLink/ButtonLink'
 import { faArrowUpRightFromSquare } from '@fortawesome/free-solid-svg-icons'
+import gsap from 'gsap'
+import { useGSAP } from '@gsap/react'
+import { ScrollTrigger } from 'gsap/ScrollTrigger'
+import { useRef } from 'react'
+
+gsap.registerPlugin(ScrollTrigger)
 
 export interface projectProps {
   id?: string
@@ -15,6 +21,7 @@ export interface projectProps {
   linkText?: string
   repoLink: string
   image: string
+  imageClass: string
 }
 
 function Project({
@@ -25,22 +32,42 @@ function Project({
   linkText,
   repoLink,
   image,
+  imageClass,
 }: projectProps) {
+  // const leftTimeline = useRef<GSAPTimeline | undefined>(undefined)
+  // const rightTimeline = useRef<GSAPTimeline | undefined>(undefined)
+  const projectRef = useRef<HTMLDivElement | null>(null)
+  const selector = gsap.utils.selector(projectRef)
+
   const buttonText: string =
     linkText !== '' ? `Visit ${linkText}` : `Visit ${title}`
-
   const shortTextArray: string[] = shortDesc.split('\\n')
 
-  // const categories: string[] = cat?.split(', ')
-  // const stacks: string[] = stack?.split(', ')
+  useGSAP(
+    () => {
+      gsap.from(selector('.project-image.right'), {
+        duration: 0.75,
+        ease: 'power1.out',
+        scrollTrigger: { trigger: projectRef.current, start: 'top 70%' },
+        xPercent: 110,
+      })
+      gsap.from(selector('.project-image.left'), {
+        ease: 'power1.out',
+        duration: 0.75,
+        scrollTrigger: { trigger: projectRef.current, start: 'top 70%' },
+        xPercent: -110,
+      })
+    },
+    { scope: projectRef }
+  )
 
   return (
-    <div className='project'>
+    <div className='project' ref={projectRef}>
       <div className='project-wrapper'>
         <div className='project-col'>
           <figure className='project-figure'>
             <img
-              className='project-image'
+              className={`project-image ${imageClass}`}
               src={`/screenshots/${image}`}
               alt={`Screenshot of ${title} website.`}
             />

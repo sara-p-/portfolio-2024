@@ -12,6 +12,7 @@ import { fetcher } from './helpers/utils'
 import { ENDPOINT } from './globals/global-variables'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faChevronDown } from '@fortawesome/free-solid-svg-icons'
+import Title from './components/Title/Title'
 
 function App() {
   // ************** Setting the Theme mode ***************//
@@ -30,7 +31,8 @@ function App() {
   return (
     <>
       <Header></Header>
-      <Section id={'home'} firstLine='Hello' secondLine='Beautiful'>
+      <Section id={'home'}>
+        <Title firstLine='Hello' secondLine='Beautiful' />
         <div className='outro'>
           <h2>My name is Sara Pitt</h2>
           <p>I'm a web developer and artist</p>
@@ -40,10 +42,15 @@ function App() {
           </button>
         </div>
       </Section>
-      <Section id={'work'} firstLine='Work'>
+      <Section id={'work'}>
+        <Title firstLine='Work' />
         <div className='projects'>
           {dataObjects.length &&
-            dataObjects.map((item) => {
+            dataObjects.map((item, index) => {
+              let imageSide = 'right'
+              if (index % 2 === 0) {
+                imageSide = 'left'
+              }
               return (
                 <Project
                   key={item.id}
@@ -54,12 +61,14 @@ function App() {
                   linkText={item.linkText}
                   repoLink={item.repoLink}
                   image={item.image}
+                  imageClass={imageSide}
                 />
               )
             })}
         </div>
       </Section>
-      <Section id={'about'} firstLine='About'>
+      <Section id={'about'}>
+        <Title firstLine='About' />
         <div className='content'>
           <h2>I’VE DONE SEVERAL THINGS</h2>
           <p>
