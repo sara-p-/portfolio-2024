@@ -36,6 +36,8 @@ function Title({ firstLine, secondLine }: titleProps) {
         },
       })
 
+      // Set the titles to visible. (In the css they are hidden because there is a flash of the title when the page first loads before the animation starts)
+      timeLine.current.set(titleBox.current, { autoAlpha: 1 })
       timeLine.current.from(first.chars, {
         duration: 0.6,
         yPercent: -100,
@@ -50,7 +52,6 @@ function Title({ firstLine, secondLine }: titleProps) {
         },
         '-=0.5'
       )
-      console.log(timeLine)
     },
     { scope: titleBox }
   )

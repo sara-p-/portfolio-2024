@@ -46,14 +46,14 @@ function Project({
   useGSAP(
     () => {
       gsap.from(selector('.project-image.right'), {
-        duration: 0.75,
+        duration: 1,
         ease: 'power1.out',
         scrollTrigger: { trigger: projectRef.current, start: 'top 70%' },
         xPercent: 110,
       })
       gsap.from(selector('.project-image.left'), {
         ease: 'power1.out',
-        duration: 0.75,
+        duration: 1,
         scrollTrigger: { trigger: projectRef.current, start: 'top 70%' },
         xPercent: -110,
       })
