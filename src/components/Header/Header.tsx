@@ -7,15 +7,20 @@ import { useRef } from 'react'
 function Header() {
   const mobileMenuRef = useRef<HTMLDivElement | null>(null)
 
-  function handleMobileClick(open: boolean): void {
-    if (mobileMenuRef.current) {
-      if (open) {
-        mobileMenuRef.current.classList.remove('active')
-      } else {
-        mobileMenuRef.current.classList.add('active')
-      }
-    }
-  }
+  // function handleBackClick(): void {
+  //   if (mobileMenuRef.current) {
+  //     mobileMenuRef.current.classList.remove('active')
+  //   }
+  // }
+  // function handleBarsClick(): void {
+  //   if (mobileMenuRef.current) {
+  //     if (open) {
+  //       mobileMenuRef.current.classList.remove('active')
+  //     } else {
+  //       mobileMenuRef.current.classList.add('active')
+  //     }
+  //   }
+  // }
 
   return (
     <header className='header'>
@@ -24,7 +29,8 @@ function Header() {
           <button
             className='mobile-menu-back-button'
             onClick={() => {
-              handleMobileClick(true)
+              if (mobileMenuRef.current)
+                mobileMenuRef.current.classList.remove('active')
             }}
           >
             <FontAwesomeIcon icon={faArrowRight} />
@@ -40,7 +46,8 @@ function Header() {
         <button
           className='mobile-menu-button'
           onClick={() => {
-            handleMobileClick(false)
+            if (mobileMenuRef.current)
+              mobileMenuRef.current.classList.add('active')
           }}
         >
           <FontAwesomeIcon icon={faBars} />

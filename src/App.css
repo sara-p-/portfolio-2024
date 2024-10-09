@@ -1,6 +1,4 @@
 #home {
-  /* height: calc(100% - 75px);
-  margin-top: 70px; */
   .wrapper {
     display: flex;
     flex-direction: column;
@@ -16,12 +14,12 @@
     margin-bottom: 1rem;
     h2 {
       margin-bottom: 8px;
-      /* @media only screen and (min-width: 768px) {
-        margin-bottom: 24px;
-      } */
     }
     p {
       margin-bottom: 8px;
+    }
+    .scroll-down-button {
+      font-size: 1rem;
     }
   }
 }

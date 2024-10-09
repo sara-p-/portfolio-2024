@@ -78,7 +78,7 @@ button.theme-toggle {
   color: var(--primary);
   z-index: 3;
   display: block;
-  transition: transform 300ms;
+  transition: transform 500ms;
   box-sizing: border-box;
   &.active {
     transform: translateX(-100%);
@@ -103,5 +103,6 @@ button.theme-toggle {
     border: none;
     appearance: none;
     cursor: pointer;
+    color: var(--primary);
   }
 }

@@ -9,10 +9,12 @@ import Footer from './components/Footer/Footer'
 import { useEffect } from 'react'
 import { keepTheme } from './helpers/themes'
 import { fetcher } from './helpers/utils'
+import { handleScrollDownClick } from './helpers/events'
 import { ENDPOINT } from './globals/global-variables'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faChevronDown } from '@fortawesome/free-solid-svg-icons'
 import Title from './components/Title/Title'
+import gsap from 'gsap'
 
 function App() {
   // ************** Setting the Theme mode ***************//
@@ -26,7 +28,10 @@ function App() {
   const dataObjects: projectProps[] =
     data === undefined ? [] : [...data].reverse()
 
-  // *************** TITLE ANIMATIONS *****************//
+  // *************** GSAP config *****************//
+  gsap.config({
+    nullTargetWarn: false,
+  })
 
   return (
     <>
@@ -36,7 +41,10 @@ function App() {
         <div className='outro'>
           <h2>My name is Sara Pitt</h2>
           <p>I'm a web developer and artist</p>
-          <button className='icon-button scroll-down-button'>
+          <button
+            className='icon-button scroll-down-button'
+            onClick={handleScrollDownClick}
+          >
             <span className='visually-hidden'>Scroll down</span>
             <FontAwesomeIcon icon={faChevronDown} />
           </button>

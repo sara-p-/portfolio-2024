@@ -8,24 +8,14 @@ interface navProps {
 }
 
 function Nav({ label }: navProps) {
-  function handleNavClick(e): void {
-    e.preventDefault()
-    // const element: HTMLDivElement | null = document.getElementById(sectionName)
-    // const headerHeight = document.querySelector('header').offsetHeight // Get the height of your header
-
-    // window.scrollTo({
-    //   top: element.offsetTop - headerHeight,
-    //   behavior: 'smooth', // Optional for smooth scrolling
-    // })
-  }
-
   return (
     <nav className='nav' aria-label={label}>
       <ul className='menu'>
         {MENU_ARRAY.map((item) => {
+          const id: string = crypto.randomUUID()
           return (
-            <li className='menu-item'>
-              <Link href={`#${item}`} linkText={item} />
+            <li className='menu-item' key={id}>
+              <Link href={`#${item}`} linkText={item} navLocation={label} />
             </li>
           )
         })}
