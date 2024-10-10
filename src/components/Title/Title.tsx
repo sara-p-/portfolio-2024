@@ -33,6 +33,7 @@ function Title({ firstLine, secondLine }: titleProps) {
         scrollTrigger: {
           trigger: titleBox.current,
           start: 'top 60%',
+          markers: true,
         },
       })
 
