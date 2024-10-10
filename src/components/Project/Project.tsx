@@ -71,9 +71,10 @@ function Project({
           },
           '<'
         )
+        projectTimeline.current.scrollTrigger?.refresh()
       }
 
-      ScrollTrigger.refresh()
+      // ScrollTrigger.refresh()
     },
     { scope: projectRef }
   )
