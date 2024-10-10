@@ -1,12 +1,12 @@
 section {
   height: auto;
-  min-height: 100dvh;
+  min-height: 100vh;
   width: 100%;
   background-color: transparent;
   position: relative;
   box-sizing: border-box;
   display: block;
   .wrapper {
-    min-height: 100dvh;
+    min-height: 100vh;
   }
 }
