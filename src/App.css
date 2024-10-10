@@ -1,8 +1,10 @@
 #home {
+  /* min-height: 100vh; */
   .wrapper {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    /* min-height: 100vh; */
   }
   .title-box {
     margin: 84px 0 3rem;
