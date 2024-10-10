@@ -43,36 +43,32 @@ function Project({
   useGSAP(
     () => {
       if (projectRef.current) {
-        // console.log(projectRef.current)
-
-        // create the selector to select the right image
-        // create the selector to select the right image
+        let mm = gsap.matchMedia()
         const selector = gsap.utils.selector(projectRef)
 
-        gsap.from(selector('.project-image.right'), {
-          duration: 1,
-          ease: 'power1.out',
-          scrollTrigger: {
-            trigger: selector('.project-image.right'),
-            start: 'top 65%',
-            // end: 'top 30%',
-          },
-          xPercent: 110,
-        })
+        // add a media query. When it matches, the associated function will run
+        mm.add('(min-width: 1024px)', () => {
+          gsap.from(selector('.project-image.right'), {
+            duration: 1,
+            ease: 'power1.out',
+            scrollTrigger: {
+              trigger: projectRef.current,
+              start: 'top 65%',
+            },
+            xPercent: 110,
+          })
 
-        gsap.from(selector('.project-image.left'), {
-          ease: 'power1.out',
-          duration: 1,
-          scrollTrigger: {
-            trigger: selector('.project-image.left'),
-            start: 'top 65%',
-            // end: 'top 30%',
-          },
-          xPercent: -110,
+          gsap.from(selector('.project-image.left'), {
+            ease: 'power1.out',
+            duration: 1,
+            scrollTrigger: {
+              trigger: projectRef.current,
+              start: 'top 65%',
+            },
+            xPercent: -110,
+          })
         })
       }
-
-      // ScrollTrigger.refresh()
     },
     { scope: projectRef }
   )

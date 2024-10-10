@@ -1,10 +1,10 @@
 #home {
-  /* min-height: 100vh; */
+  min-height: 100dvh;
   .wrapper {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    /* min-height: 100vh; */
+    min-height: 100dvh;
   }
   .title-box {
     margin: 84px 0 3rem;
