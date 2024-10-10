@@ -43,19 +43,28 @@ function Project({
   useGSAP(
     () => {
       if (projectRef.current) {
+        // create the selector to select the right image
         const selector = gsap.utils.selector(projectRef)
 
         gsap.from(selector('.project-image.right'), {
           duration: 1,
           ease: 'power1.out',
-          scrollTrigger: { trigger: projectRef.current, start: 'top 70%' },
+          scrollTrigger: {
+            trigger: projectRef.current,
+            start: 'top 70%',
+            markers: true,
+          },
           xPercent: 110,
         })
 
         gsap.from(selector('.project-image.left'), {
           ease: 'power1.out',
           duration: 1,
-          scrollTrigger: { trigger: projectRef.current, start: 'top 70%' },
+          scrollTrigger: {
+            trigger: projectRef.current,
+            start: 'top 70%',
+            markers: true,
+          },
           xPercent: -110,
         })
       }
