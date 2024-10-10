@@ -35,6 +35,7 @@ function Project({
   imageClass,
 }: projectProps) {
   const projectRef = useRef<HTMLDivElement | null>(null)
+  const projectTimeline = useRef<GSAPTimeline | undefined>(undefined)
 
   const buttonText: string =
     linkText !== '' ? `Visit ${linkText}` : `Visit ${title}`
@@ -48,28 +49,31 @@ function Project({
         // create the selector to select the right image
         const selector = gsap.utils.selector(projectRef)
 
-        gsap.from(selector('.project-image.right'), {
-          duration: 1,
-          ease: 'power1.out',
+        // create the timeline
+        projectTimeline.current = gsap.timeline({
           scrollTrigger: {
             trigger: projectRef.current,
             start: 'top 60%',
-            markers: true,
           },
-          xPercent: 110,
         })
 
-        gsap.from(selector('.project-image.left'), {
-          ease: 'power1.out',
+        projectTimeline.current.from(selector('.project-image.right'), {
           duration: 1,
-          scrollTrigger: {
-            trigger: projectRef.current,
-            start: 'top 60%',
-            markers: true,
-          },
-          xPercent: -110,
+          ease: 'power1.out',
+          xPercent: 110,
         })
+        projectTimeline.current.from(
+          selector('.project-image.left'),
+          {
+            ease: 'power1.out',
+            duration: 1,
+            xPercent: -110,
+          },
+          '<'
+        )
       }
+
+      ScrollTrigger.refresh()
     },
     { scope: projectRef }
   )
