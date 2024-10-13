@@ -43,7 +43,7 @@ function Project({
   useGSAP(
     () => {
       if (projectRef.current) {
-        let mm = gsap.matchMedia()
+        const mm = gsap.matchMedia()
         const selector = gsap.utils.selector(projectRef)
 
         // add a media query. When it matches, the associated function will run
