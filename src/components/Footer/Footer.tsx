@@ -47,6 +47,7 @@ function Footer() {
                 href=''
                 icon={faPaperPlane}
                 classes={['footer__link']}
+                contact={true}
               />
             </li>
           </ul>

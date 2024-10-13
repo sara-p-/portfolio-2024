@@ -39,7 +39,7 @@ function Header() {
         <Nav label={'mobile'} />
       </div>
       <div className='wrapper'>
-        <a href='#' className='logo'>
+        <a href='#home' className='logo'>
           SP
         </a>
         <Nav label={'primary'} />
