@@ -40,10 +40,17 @@ nav {
 /* Mobile Menu */
 .mobile-menu {
   nav {
-    display: block;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-end;
+    height: calc(100dvh - 76px);
+    position: relative;
     ul {
       padding: 0;
       display: block;
+      width: 100%;
+      overflow: scroll;
       li {
         margin: 0;
         border-bottom: 3px solid var(--primary);
