@@ -3,24 +3,10 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faArrowRight, faBars } from '@fortawesome/free-solid-svg-icons'
 import Nav from '../Nav/Nav'
 import { useRef } from 'react'
+import Link from '../Link/Link'
 
 function Header() {
   const mobileMenuRef = useRef<HTMLDivElement | null>(null)
-
-  // function handleBackClick(): void {
-  //   if (mobileMenuRef.current) {
-  //     mobileMenuRef.current.classList.remove('active')
-  //   }
-  // }
-  // function handleBarsClick(): void {
-  //   if (mobileMenuRef.current) {
-  //     if (open) {
-  //       mobileMenuRef.current.classList.remove('active')
-  //     } else {
-  //       mobileMenuRef.current.classList.add('active')
-  //     }
-  //   }
-  // }
 
   return (
     <header className='header'>
@@ -39,9 +25,7 @@ function Header() {
         <Nav label={'mobile'} />
       </div>
       <div className='wrapper'>
-        <a href='#home' className='logo'>
-          SP
-        </a>
+        <Link href='#home' linkText='SP' linkClass={['logo']} />
         <Nav label={'primary'} />
         <button
           className='mobile-menu-button'

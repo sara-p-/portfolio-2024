@@ -7,17 +7,23 @@ gsap.registerPlugin(ScrollToPlugin)
 export interface linkProps {
   href: string
   linkText: string
-  navLocation: string
+  linkClass?: string[]
+  navLocation?: string
 }
 
-function Link({ href, linkText, navLocation }: linkProps) {
+function Link({ href, linkText, linkClass, navLocation }: linkProps) {
+  // format the classes
+  const linkClasses: string[] = linkClass?.length
+    ? ['link', ...linkClass]
+    : ['link']
+
   function handleLinkClick(
     e: React.MouseEvent<HTMLAnchorElement | MouseEvent>,
-    linkId: string
+    href: string
   ): void {
     e.preventDefault()
 
-    const element: HTMLElement | null = document.querySelector(`#${linkId}`)
+    const element: HTMLElement | null = document.querySelector(href)
     const headerHeight: number | undefined =
       document.querySelector('header')?.offsetHeight
 
@@ -28,7 +34,7 @@ function Link({ href, linkText, navLocation }: linkProps) {
         ease: 'power2',
       })
       // If the menu is the mobile menu, close it after a link is clicked
-      if (navLocation === 'mobile') {
+      if (navLocation && navLocation === 'mobile') {
         const mobileMenu: HTMLElement | null =
           document.querySelector('.mobile-menu')
         mobileMenu?.classList.remove('active')
@@ -39,8 +45,8 @@ function Link({ href, linkText, navLocation }: linkProps) {
   return (
     <a
       href={href}
-      className='link'
-      onClick={(e) => handleLinkClick(e, linkText)}
+      className={linkClasses.join(' ')}
+      onClick={(e) => handleLinkClick(e, href)}
     >
       {linkText}
     </a>
