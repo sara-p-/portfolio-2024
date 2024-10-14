@@ -53,7 +53,7 @@ function Project({
             ease: 'power1.out',
             scrollTrigger: {
               trigger: projectRef.current,
-              start: 'top 65%',
+              start: 'top 80%',
             },
             xPercent: 110,
           })
@@ -63,7 +63,7 @@ function Project({
             duration: 1,
             scrollTrigger: {
               trigger: projectRef.current,
-              start: 'top 65%',
+              start: 'top 80%',
             },
             xPercent: -110,
           })
