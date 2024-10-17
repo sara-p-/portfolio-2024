@@ -28,6 +28,11 @@ function App() {
   const dataObjects: projectProps[] =
     data === undefined ? [] : [...data].reverse()
 
+  // only include the projects with {include: "show"}
+  const projects: projectProps[] = dataObjects.length
+    ? dataObjects.filter((item) => item.include === 'show')
+    : []
+
   // *************** GSAP config *****************//
   gsap.config({
     nullTargetWarn: false,
@@ -53,8 +58,8 @@ function App() {
       <Section id={'work'}>
         <Title firstLine='Work' />
         <div className='projects'>
-          {dataObjects.length &&
-            dataObjects.map((item, index) => {
+          {projects.length &&
+            projects.map((item, index) => {
               let imageSide = 'right'
               if (index % 2 === 0) {
                 imageSide = 'left'

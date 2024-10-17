@@ -14,6 +14,7 @@ export interface projectProps {
   title: string
   subtitle: string
   shortDesc: string
+  include: string
   stack?: string
   cat?: string
   longDesc?: string
