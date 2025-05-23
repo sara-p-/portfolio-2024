@@ -70,6 +70,7 @@ function App() {
                   title={item.title}
                   subtitle={item.subtitle}
                   shortDesc={item.shortDesc}
+                  include={item.include}
                   link={item.link}
                   linkText={item.linkText}
                   repoLink={item.repoLink}
