@@ -152,5 +152,19 @@
     "linkText": "",
     "repoLink": "",
     "image": "template-rebrand.png"
+  },
+  {
+    "id": "12",
+    "title": "Booklist: Next.js Edition",
+    "subtitle": "Fast as heck and ready to rumble",
+    "shortDesc": "I wanted to try building a custom API to house my data, so I used this as an opportunity to rebuild my original Booklist site (shown a few projects down) in Next.js and WordPress. \\n I was able to leverage a lot of Next.js's tools (like pre-loading, server-side rendering, and image optimization) to create a fast and efficient site.",
+    "include": "show",
+    "stack": "TypeScript, React, Next.js, CSS, WordPress, Vercel",
+    "categories": "Personal, Backend, Frontend",
+    "longDesc": "",
+    "link": "https://www.readthatbooklist.com/",
+    "linkText": "",
+    "repoLink": "",
+    "image": "booklist-2-light.png"
   }
 ]
