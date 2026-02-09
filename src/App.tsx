@@ -124,8 +124,7 @@ function App() {
             variety of situations, both technical and social.
           </p>
           <p>
-            I’ve now been a developer for over 10 years now and absolutely love
-            it.
+            I’ve been a developer for over 10 years now and absolutely love it.
           </p>
           <h3 className='h2'>LET’S MAKE SOMETHING BEAUTIFUL TOGETHER.</h3>
         </div>
